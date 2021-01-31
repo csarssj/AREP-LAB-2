@@ -1,7 +1,5 @@
 package edu.escuelaing.arem.linkedList;
 
-import java.util.List;
-
 /***
  * Implementacion linked list
  * @author ceseg

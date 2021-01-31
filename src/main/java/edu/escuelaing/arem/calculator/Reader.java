@@ -1,8 +1,11 @@
 package edu.escuelaing.arem.calculator;
 
-import java.io.*;
-
 import edu.escuelaing.arem.linkedList.LinkedList;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *Clase para la lectura e imprmimir el calculo de la media y la desviación estandar
