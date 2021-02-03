@@ -7,17 +7,30 @@ import edu.escuelaing.arem.linkedList.LinkedList;
 import spark.Request;
 import spark.Response;
 /**
- * Clase principal donde se inicia la aplicación
- *
+ * Clase principal donde se inicia la aplicación web construida con spark
+ * 
+ * @author ceseg
  */
 public class SparkWebApp
 {
+    /**
+     * Metodo principal que usa sparkWeb y funciones lampda para mapear las vistas
+     * dentro de la app
+     * @param args
+     */
     public static void main(String[] args) {
         port(getPort());
         get("/hello", (req, res) -> "Hello Heroku");
         get("/inputdata", (req, res) -> inputDataPage(req, res));
         get("/results", (req, res) -> resultsPage(req, res));
     }
+
+    /**
+     * Pagina de inicio donde se ingresan los datos ha calcular
+     * @param req Tiene la informacion de la petición.
+     * @param res Tiene la información con la respuesta del servidor.
+     * @return String que contiene el codigo generado del HTML
+     */
     private static String inputDataPage(Request req, Response res) {
         String pageContent
                 = "<!DOCTYPE html>"
@@ -46,6 +59,13 @@ public class SparkWebApp
                 + "</html>";
         return pageContent;
     }
+
+    /**
+     * Pagina que da el resultado de los calculos
+     * @param req Tiene la informacion de la petición.
+     * @param res Tiene la información con la respuesta del servidor.
+     * @return String que contiene el codigo generado del HTML
+     */
     private static String resultsPage(Request req, Response res) {
         LinkedList numbers = new LinkedList();
         Calculator cal = new Calculator();
@@ -76,6 +96,11 @@ public class SparkWebApp
                 + "</body>"
                 + "</html>";
     }
+
+    /**
+     *
+     * @return el puerto sobre cual se desplegará la app
+     */
     static int getPort() {
         if (System.getenv("PORT") != null) {
             return Integer.parseInt(System.getenv("PORT"));
