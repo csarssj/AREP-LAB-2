@@ -60,6 +60,13 @@ El sistema, mas alla de facilitar el registro de las iniciativas e ideas de proy
 
 * [Maven](https://maven.apache.org/) - Dependency Management
 
+## Despliegue en heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://caluladoraarem.herokuapp.com/inputdata)
+
+## Integración continua
+
+[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/csarssj/AREP-LAB-2)
 
 ## Control de versiones 
 
