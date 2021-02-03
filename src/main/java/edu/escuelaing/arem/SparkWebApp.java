@@ -7,15 +7,13 @@ import edu.escuelaing.arem.linkedList.LinkedList;
 import spark.Request;
 import spark.Response;
 /**
- * Hello world!
+ * Clase principal donde se inicia la aplicación
  *
  */
 public class SparkWebApp
 {
     public static void main(String[] args) {
         port(getPort());
-        //Reader r = new Reader();
-        //r.fileReader(new File("numeros.txt"));
         get("/hello", (req, res) -> "Hello Heroku");
         get("/inputdata", (req, res) -> inputDataPage(req, res));
         get("/results", (req, res) -> resultsPage(req, res));
@@ -24,15 +22,26 @@ public class SparkWebApp
         String pageContent
                 = "<!DOCTYPE html>"
                 + "<html>"
-                + "<body>"
-                + "<h2>HTML Forms</h2>"
+                + "<head>"
+                + "<style>"
+                + "body {text-align: center; font-family: \"new century schoolbook\";}"
+                + "h2 {text-align: center;}"
+                + "h4 {text-align: center;}"
+                + "p {text-align: center;}"
+                + "div {text-align: center;}"
+                + "form { inline-block;}"
+                + "</style>"
+                + "</head>"
+                +"<title>Calculator</title>"
+                + "<body style=\"background-color:powderblue;\">"
+                + "<h2 text-aling =\"center\">Calculadora de medía y desviación estandar</h2>"
+                + "<h4 text-aling =\"center\">Ingresar una lista de numeros: [1,2,3,4,5] </h4>"
                 + "<form action=\"/results\">"
-                + "  First name:<br>"
-                + "  <input type=\"text\" name=\"numeros\" value=\"Mickey\">"
+                + "  Ingresa Numeros:<br>"
+                + "  <input type=\"text\" name=\"numeros\" value=\"\">"
                 + "  <br><br>"
                 + "  <input type=\"submit\" value=\"Submit\">"
                 + "</form>"
-                + "<p>If you click the \"Submit\" button, the form-data will be sent to a page called \"/results\".</p>"
                 + "</body>"
                 + "</html>";
         return pageContent;
@@ -44,8 +53,28 @@ public class SparkWebApp
         for(String n : par){numbers.append(new Double(n));}
         Double mean = cal.mean(numbers);
         Double des = cal.desviationStandar(numbers);
-        return "El calculo de la medía es: " +
-                mean +" Y el calculo de la desviación es: "+ des;
+        return "<!DOCTYPE html>"
+                + "<html>"
+                + "<head>"
+                + "<style>"
+                + "body {text-align: center;"
+                + " font-family: \"new century schoolbook\";}"
+                + "h2 {text-align: center;}"
+                + "p {text-align: center;}"
+                + "a {text-align: center;}"
+                + "div {text-align: center;}"
+                + "form action {text-align: center;}"
+                + "</style>"
+                + "</head>"
+                +"<title>Calculator</title>"
+                + "<body style=\"background-color:powderblue;\">"
+                + "<h2 text-aling =\"center\">El resultado de  medía y desviación estandar</h2>"
+                + "<p>El calculo de la medía es: " +mean+ "</p>"
+                + "<p>El calculo de la desviación es: "+des+ "</p>"
+                + "<br>"
+                + "<p><a href=\"/inputdata\"> Para volver haz clic acá</a></p>"
+                + "</body>"
+                + "</html>";
     }
     static int getPort() {
         if (System.getenv("PORT") != null) {
